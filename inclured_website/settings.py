@@ -10,7 +10,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-STATICFILES_DIR= [os.path.join(BASE_DIR), "static"]
+STATICFILES_DIR= [os.path.join(BASE_DIR, "static")]
 
 
 # Application definition
