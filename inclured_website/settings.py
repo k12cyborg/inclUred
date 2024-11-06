@@ -12,6 +12,7 @@ ALLOWED_HOSTS = []
 
 STATICFILES_DIR= [os.path.join(BASE_DIR, "static")]
 
+AUTH_USER_MODEL = "inclured1.Usuario"
 
 # Application definition
 

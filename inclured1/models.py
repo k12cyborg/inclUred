@@ -1,53 +1,75 @@
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 
-class Usuarios(models.Model):
 
-    # Campos
-    id_usuario = models.IntegerField(primary_key=True)
-    nombre = models.TextField(help_text="Ingresa un nombre de ususario", null=False)
-    correo = models.EmailField(help_text="Ingresa tu correo", null=False)
-    contrasena = models.TextField(help_text="Ingreso una contraseña", null=False)
-    discapacidad = models.TextField(help_text="Ingresa tu discapacidad", null=False)
-    ...
+class UsuarioManager(BaseUserManager):
+    def create_user(self, correo, nombre, password=None):
+        if not correo:
+            raise ValueError("El usuario debe tener un correo electrónico")
 
-    def __str__(self):
+        user = self.model(
+            correo=self.normalize_email(correo),
+            nombre=nombre,
+        )
+        user.set_password(password)  # Encripta la contraseña
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, correo, nombre, password=None):
+        user = self.create_user(
+            correo,
+            nombre=nombre,
+            password=password,
+        )
+        user.is_admin = True
+        user.save(using=self._db)
+        return user
+
+
+class Usuario(AbstractBaseUser):
+    correo = models.EmailField(unique=True)
+    nombre = models.CharField(max_length=255)
+    cod_disc = models.ForeignKey(
+        'Discapacidad', on_delete=models.SET_NULL, null=True, related_name='usuarios')
+
+    # Campos adicionales
+    is_active = models.BooleanField(default=True)
+    is_admin = models.BooleanField(default=False)
+
+    objects = UsuarioManager()
+
+    USERNAME_FIELD = 'correo'
+    REQUIRED_FIELDS = ['nombre']
+
+    def _str_(self):
+        return self.correo
+
+    def has_perm(self, perm, obj=None):
+        return True
+
+    def has_module_perms(self, app_label):
+        return True
+
+    @property
+    def is_staff(self):
+        return self.is_admin
+
+
+class Discapacidad(models.Model):
+    cod_disc = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=255)
+    descripcion = models.TextField()
+
+    def _str_(self):
         return self.nombre
 
-class Perfiles(models.Model):
 
-    # Campos
-    id_perfil = models.IntegerField(primary_key=True)
-    id_usuario = models.IntegerField()
-    # imagen = models.ImageField(help_text="Imagen de perfil", null=True)
-    ...
+class Anecdota(models.Model):
+    id_anecdota = models.AutoField(primary_key=True)
+    id_usuario = models.ForeignKey(
+        Usuario, on_delete=models.CASCADE, related_name='anecdotas')
+    titulo = models.CharField(max_length=255)
+    contenido = models.TextField()
 
-    def __str__(self):
-        return self.id_perfil
-      
-class Anecdotas(models.Model):
-
-    # Campos
-    id_anecdota = models.IntegerField(primary_key=True)
-    id_usuario = models.IntegerField()
-    titulo = models.TextField(help_text="Ingresa un titulo para la anecdota", null=False)
-    contenido = models.TextField(help_text="Ingresa el contenido para la anecdota", null=False)
-    
-    # imagen = models.ImageField(help_text="Imagen de perfil", null=True)
-    ...
-
-    def __str__(self):
-        return self.titulo
-
-class Informaciones(models.Model):
-
-    # Campos
-    id_informacion = models.IntegerField(primary_key=True)
-    titulo = models.TextField(help_text="Ingresa un titulo para la anecdota", null=False)
-    subtitulo = models.TextField(help_text="Ingresa un subtitulo para la anecdota", null=False)
-    contenido = models.TextField(help_text="Ingresa el contenido para la anecdota", null=False)
-    
-    # imagen = models.ImageField(help_text="Imagen de perfil", null=True)
-    ...
-
-    def __str__(self):
+    def _str_(self):
         return self.titulo
