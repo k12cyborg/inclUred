@@ -1,0 +1,7 @@
+<!-- anecdotas/anecdota_list.html -->
+<h2>Lista de Anécdotas</h2>
+<ul>
+    {% for anecdota in anecdotas %}
+        <li><a href="{% url 'anecdota_detail' anecdota.pk %}">{{ anecdota.titulo }}</a> - {{ anecdota.id_usuario.nombre }}</li>
+    {% endfor %}
+</ul>

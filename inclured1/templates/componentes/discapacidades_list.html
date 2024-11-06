@@ -1,0 +1,7 @@
+<!-- discapacidades/discapacidad_list.html -->
+<h2>Lista de Discapacidades</h2>
+<ul>
+    {% for discapacidad in discapacidades %}
+        <li><a href="{% url 'discapacidad_detail' discapacidad.pk %}">{{ discapacidad.nombre }}</a></li>
+    {% endfor %}
+</ul>

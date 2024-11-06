@@ -25,7 +25,6 @@ class UsuarioManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-
 class Usuario(AbstractBaseUser):
     correo = models.EmailField(unique=True)
     nombre = models.CharField(max_length=255)
