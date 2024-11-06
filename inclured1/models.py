@@ -41,7 +41,7 @@ class Usuario(AbstractBaseUser):
     USERNAME_FIELD = 'correo'
     REQUIRED_FIELDS = ['nombre']
 
-    def _str_(self):
+    def __str__(self):
         return self.correo
 
     def has_perm(self, perm, obj=None):
@@ -60,7 +60,7 @@ class Discapacidad(models.Model):
     nombre = models.CharField(max_length=255)
     descripcion = models.TextField()
 
-    def _str_(self):
+    def __str__(self):
         return self.nombre
 
 
@@ -71,5 +71,5 @@ class Anecdota(models.Model):
     titulo = models.CharField(max_length=255)
     contenido = models.TextField()
 
-    def _str_(self):
+    def __str__(self):
         return self.titulo
