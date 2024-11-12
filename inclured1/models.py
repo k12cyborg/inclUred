@@ -22,6 +22,8 @@ class UsuarioManager(BaseUserManager):
             password=password,
         )
         user.is_admin = True
+        user.is_staff = True
+        user.is_superuser = True
         user.save(using=self._db)
         return user
 
@@ -34,7 +36,9 @@ class Usuario(AbstractBaseUser):
     # Campos adicionales
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+    
     objects = UsuarioManager()
 
     USERNAME_FIELD = 'correo'
@@ -44,10 +48,10 @@ class Usuario(AbstractBaseUser):
         return self.correo
 
     def has_perm(self, perm, obj=None):
-        return True
+        return self.is_superuser
 
     def has_module_perms(self, app_label):
-        return True
+        return self.is_superuser
 
     @property
     def is_staff(self):
