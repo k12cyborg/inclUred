@@ -8,16 +8,8 @@
     <link rel="stylesheet" href="{% static 'inclured1/style.css' %}">
 </head>
 <body>
-    <header>
-        <div class="logo">InclUred</div>
-        <nav>
-            <a href="{% url 'informacion' %}">Información</a>
-            <a href="{% url 'anecdotas' %}">Anécdotas</a>
-            <a href="{% url 'cursos' %}">Cursos</a>
-            <a href="{% url 'videos' %}">Videos Informativos</a>
-        </nav>
-        <div class="user-icon">👤</div>
-    </header>
+    <!-- Encabezado con navegación -->
+    {% include "./componentes/Header.html" %}
 
     <!-- Contenido de la Página de Inicio -->
     <div class="content" id="inicio">

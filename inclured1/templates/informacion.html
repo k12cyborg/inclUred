@@ -9,16 +9,7 @@
 </head>
 <body>
     <!-- Encabezado con navegación -->
-    <header>
-        <div class="logo">InclUred</div>
-        <nav>
-            <a href="{% url 'informacion' %}">Información</a>
-            <a href="{% url 'anecdotas' %}">Anécdotas</a>
-            <a href="{% url 'cursos' %}">Cursos</a>
-            <a href="{% url 'videos' %}">Videos Informativos</a>
-        </nav>
-        <div class="user-icon">👤</div>
-    </header>
+    {% include "./componentes/Header.html" %}
 
     <!-- Contenido de la página de Información -->
     <div class="content" id="informacion">
