@@ -1,15 +1,58 @@
-<!-- archivo_principal.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Página Principal</title>
-  </head>
-  <body>
-    {% include "./componentes/anecdotas_list.html" %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InclUred</title>
+    <link rel="stylesheet" href="{% static 'inclured1/style.css' %}">
+</head>
+<body>
 
+    <!-- Encabezado -->
+    <header>
+        <div class="logo">InclUred</div>
+        <nav>
+            <a href="#">Información</a>
+            <a href="#">Anécdotas</a>
+            <a href="#">Cursos</a>
+            <a href="#">Videos Informativos</a>
+        </nav>
+        <div class="user-icon">👤</div>
+    </header>
+
+    <!-- Sección de Bienvenida -->
     <h1>Bienvenido a la Página Principal</h1>
-    
- 
-  </body>
+
+    <!-- Lista de Anécdotas -->
+    <div class="content">
+        <h2>Lista de Anécdotas</h2>
+        {% include "./componentes/anecdotas_list.html" %}
+    </div>
+
+    <!-- Sección de Cursos -->
+    <div class="content">
+        <div>
+            <div class="section-title">Cursos</div>
+            <div class="box-container">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de Videos Informativos -->
+    <div class="content">
+        <div>
+            <div class="section-title">Videos Informativos</div>
+            <div class="box-container">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
 </html>

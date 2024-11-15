@@ -1,0 +1,95 @@
+/* Estilos globales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #808080; /* Color de fondo gris */
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Encabezado */
+header {
+    width: 100%;
+    background-color: #b2f2a5;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #d0e3f7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: black;
+}
+
+/* Menú de navegación */
+nav {
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    padding: 10px 20px;
+    background-color: #a1e2a1; /* Verde claro */
+    border-radius: 20px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background-color: #6da96d; /* Verde oscuro al pasar el cursor */
+}
+
+/* Sección principal */
+.content {
+    width: 80%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.section-title {
+    background-color: #ffdd57; /* Amarillo */
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.box-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+    background-color: #60d7e4; /* Azul claro */
+    border-radius: 20px;
+}
