@@ -1,15 +1,21 @@
 from django.contrib import admin
 from django.urls import path, include
 from inclured1 import views
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name="index"),  # Página de inicio en la URL principal
+    # Página de inicio en la URL principal
+    path('', views.index, name="index"),
 
     # Incluye las URLs de `inclured1`
     path('inclured1/', include("inclured1.urls")),
 
-    path('registro/', views.registro_usuario, name='registro_usuario'),
+    path('login/', views.login_view, name='login'),
+    path('register/', views.register_view, name='register'),
+    path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
+
+    path('perfil_usuario/', views.perfil_usuario, name='perfil_usuario'),
 
     # URLs para las secciones principales de la página
     path('informacion/', views.informacion, name='informacion'),
@@ -19,14 +25,18 @@ urlpatterns = [
 
     # URLs para Usuario
     path('usuarios/', views.UsuarioListView.as_view(), name='usuario_list'),
-    path('usuarios/<int:pk>/', views.UsuarioDetailView.as_view(), name='usuario_detail'),
+    path('usuarios/<int:pk>/', views.UsuarioDetailView.as_view(),
+         name='usuario_detail'),
 
     # URLs para Discapacidad
-    path('discapacidades/', views.DiscapacidadListView.as_view(), name='discapacidad_list'),
-    path('discapacidades/<int:pk>/', views.DiscapacidadDetailView.as_view(), name='discapacidad_detail'),
+    path('discapacidades/', views.DiscapacidadListView.as_view(),
+         name='discapacidad_list'),
+    path('discapacidades/<int:pk>/',
+         views.DiscapacidadDetailView.as_view(), name='discapacidad_detail'),
 
     # URLs para Anecdota (subpáginas de anécdotas específicas)
     path('anecdotas-list/', views.AnecdotaListView.as_view(), name='anecdota_list'),
-    path('anecdotas-list/<int:pk>/', views.AnecdotaDetailView.as_view(), name='anecdota_detail'),
+    path('anecdotas-list/<int:pk>/',
+         views.AnecdotaDetailView.as_view(), name='anecdota_detail'),
 
 ]

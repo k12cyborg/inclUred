@@ -1,21 +1,56 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 from django.views.generic import ListView, DetailView
 from .models import Usuario, Discapacidad, Anecdota
-from .forms import UsuarioForm
+from .forms import UsuarioForm, LoginForm
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import logout
+from django.http import JsonResponse
 
 #Vista para el registro
-def registro_usuario(request):
+def register_view(request):
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
             user.save()
-            return redirect('exito')  # Redirige a una página de éxito después del registro
+            return redirect(index())  # Redirige a una página de éxito después del registro
     else:
         form = UsuarioForm()
 
-    return render(request, 'registro_usuario.html', {'form': form})
+    return render(request, 'register.html', {'form': form})
+
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(data=request.POST)
+        if form.is_valid():
+            correo = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=correo, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect("index")  # Cambia 'pagina_principal' por tu vista principal
+            else:
+                messages.error(request, "Correo o contraseña incorrectos")
+        else:
+            messages.error(request, "Formulario no válido")
+    else:
+        form = LoginForm()
+
+    return render(request, 'login.html', {'form': form})
+
+@csrf_exempt
+def logout_user(request):
+    if request.method == "POST":
+        logout(request)
+        return JsonResponse({"message": "Sesión cerrada con éxito"}, status=200)
+    return JsonResponse({"error": "Método no permitido"}, status=405)
+
+def perfil_usuario(request):
+    return render(request, "perfil_usuario.html")
+
 # Vista para la página de inicio
 def index(request):
     return render(request, "index.html")

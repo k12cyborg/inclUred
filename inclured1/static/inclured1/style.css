@@ -24,23 +24,13 @@ header {
     align-items: center;
 }
 
+
 .logo {
     font-size: 24px;
     font-weight: bold;
     color: black;
 }
 
-.user-icon {
-    width: 3rem;
-    height: 3rem;
-    background-color: #fafaf3;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: black;
-}
 
 /* Menú de navegación */
 nav {
@@ -59,6 +49,23 @@ nav a {
 
 nav a:hover {
     background-color: #6da96d; /* Verde oscuro al pasar el cursor */
+}
+
+.user-controls {
+    border: 1px solid red;
+    display: flex;
+}
+/* Perfil y sesión */
+.user-icon {
+    width: 3rem;
+    height: 3rem;
+    background-color: #fafaf3;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: black;
 }
 
 /* Sección principal */
