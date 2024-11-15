@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos Informativos - InclUred</title>
+    <link rel="stylesheet" href="{% static 'inclured1/style.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">InclUred</div>
+        <nav>
+            <a href="{% url 'informacion' %}">Información</a>
+            <a href="{% url 'anecdotas' %}">Anécdotas</a>
+            <a href="{% url 'cursos' %}">Cursos</a>
+            <a href="{% url 'videos_informativos' %}">Videos Informativos</a>
+        </nav>
+        <div class="user-icon">👤</div>
+    </header>
+
+    <!-- Contenido de la página de Videos Informativos -->
+    <div class="content" id="videos">
+        <div class="section-title">Videos Informativos</div>
+        <div class="box-container" style="flex-direction: column;">
+            <div class="box">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/TuVbp2gqPRI" 
+                        title="¿Qué es la discapacidad?" frameborder="0" allowfullscreen></iframe>
+                <p>¿Qué es la discapacidad?</p>
+            </div>
+            <div class="box">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/R8h8UDCyLD8" 
+                        title="Tipos de discapacidades" frameborder="0" allowfullscreen></iframe>
+                <p>Diferentes tipos de discapacidades</p>
+            </div>
+            <div class="box">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/_R4lWNpsmno" 
+                        title="Discapacidad en niños" frameborder="0" allowfullscreen></iframe>
+                <p>Discapacidad en niños</p>
+            </div>
+            <div class="box">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/0taeMhWEqXI" 
+                        title="Discapacidad visual" frameborder="0" allowfullscreen></iframe>
+                <p>Discapacidad visual</p>
+            </div>
+            <div class="box">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/llQb_DvSsdI" 
+                        title="Discapacidad intelectual" frameborder="0" allowfullscreen></iframe>
+                <p>Discapacidad intelectual</p>
+            </div>
+            <div class="box">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/8IMI6YfGN_8" 
+                        title="Discapacidad auditiva" frameborder="0" allowfullscreen></iframe>
+                <p>Discapacidad auditiva</p>
+            </div>
+            <div class="box">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/1_oZHsgXwXI" 
+                        title="Inclusión y salud" frameborder="0" allowfullscreen></iframe>
+                <p>Inclusión y salud</p>
+            </div>
+            <div class="box">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/BIXW2PwxLSI" 
+                        title="Apoyo a personas con discapacidades" frameborder="0" allowfullscreen></iframe>
+                <p>Apoyo a personas con discapacidades</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

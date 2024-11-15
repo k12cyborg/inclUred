@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos - InclUred</title>
+    <link rel="stylesheet" href="{% static 'inclured1/style.css' %}">
+</head>
+<body>
+    <!-- Encabezado con navegación -->
+    <header>
+        <div class="logo">InclUred</div>
+        <nav>
+            <a href="{% url 'informacion' %}">Información</a>
+            <a href="{% url 'anecdotas' %}">Anécdotas</a>
+            <a href="{% url 'cursos' %}">Cursos</a>
+            <a href="{% url 'videos' %}">Videos Informativos</a>
+        </nav>
+        <div class="user-icon">👤</div>
+    </header>
+
+    <!-- Contenido de la página de Cursos -->
+    <div class="content" id="cursos">
+        <div class="section-title">Cursos</div>
+        <div class="box-container">
+            <div class="box">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/4hffvpcKNY0" 
+                        title="Curso 1" frameborder="0" allowfullscreen></iframe>
+                <p>Curso de Lenguaje de Señas - Lense Biobio Chile</p>
+            </div>
+            <div class="box">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/joiUXzfzHuI" 
+                        title="Curso 2" frameborder="0" allowfullscreen></iframe>
+                <p>Lectura de Braille - Discapacitados Visuales I.A.P.</p>
+            </div>
+            <div class="box">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/caZ9BSvC5Xk" 
+                        title="Curso 3" frameborder="0" allowfullscreen></iframe>
+                <p>Accesibilidad en Tecnologías - CERETI UC Temuco</p>
+            </div>
+            <div class="box">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/-mIWuZMUonI" 
+                        title="Curso 4" frameborder="0" allowfullscreen></iframe>
+                <p>Introducción al Braille - Yuma County Library</p>
+            </div>
+            <div class="box">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/ri1kz3V_qrw" 
+                        title="Curso 5" frameborder="0" allowfullscreen></iframe>
+                <p>Lenguaje de Señas Nivel Avanzado - Sergio López Lozano</p>
+            </div>
+            <div class="box">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/EmHIoI-ceoI" 
+                        title="Curso 6" frameborder="0" allowfullscreen></iframe>
+                <p>Interpretación de Lenguaje de Señas - DR LAROSA</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

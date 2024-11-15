@@ -4,8 +4,27 @@ from inclured1 import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', include("inclured1.urls")),
-    path('', views.index, name="index"),
-    # path('login/', views.user_login, name='login'),  # Vista de login
-    # path('logout/', views.user_logout, name='logout'),  # Vista de logout
+    path('', views.index, name="index"),  # Página de inicio en la URL principal
+
+    # Incluye las URLs de `inclured1`
+    path('inclured1/', include("inclured1.urls")),
+
+    # URLs para las secciones principales de la página
+    path('informacion/', views.informacion, name='informacion'),
+    path('anecdotas/', views.anecdotas, name='anecdotas'),
+    path('cursos/', views.cursos, name='cursos'),
+    path('videos/', views.videos_informativos, name='videos'),
+
+    # URLs para Usuario
+    path('usuarios/', views.UsuarioListView.as_view(), name='usuario_list'),
+    path('usuarios/<int:pk>/', views.UsuarioDetailView.as_view(), name='usuario_detail'),
+
+    # URLs para Discapacidad
+    path('discapacidades/', views.DiscapacidadListView.as_view(), name='discapacidad_list'),
+    path('discapacidades/<int:pk>/', views.DiscapacidadDetailView.as_view(), name='discapacidad_detail'),
+
+    # URLs para Anecdota (subpáginas de anécdotas específicas)
+    path('anecdotas-list/', views.AnecdotaListView.as_view(), name='anecdota_list'),
+    path('anecdotas-list/<int:pk>/', views.AnecdotaDetailView.as_view(), name='anecdota_detail'),
+
 ]

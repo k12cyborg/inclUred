@@ -1,0 +1,57 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información - InclUred</title>
+    <link rel="stylesheet" href="{% static 'inclured1/style.css' %}">
+</head>
+<body>
+    <!-- Encabezado con navegación -->
+    <header>
+        <div class="logo">InclUred</div>
+        <nav>
+            <a href="{% url 'informacion' %}">Información</a>
+            <a href="{% url 'anecdotas' %}">Anécdotas</a>
+            <a href="{% url 'cursos' %}">Cursos</a>
+            <a href="{% url 'videos' %}">Videos Informativos</a>
+        </nav>
+        <div class="user-icon">👤</div>
+    </header>
+
+    <!-- Contenido de la página de Información -->
+    <div class="content" id="informacion">
+        <div class="section-title">Información</div>
+        <div class="text-container">
+            <p><strong>¿Qué es la Discapacidad?</strong><br>
+            La discapacidad se define como una condición que afecta la forma en que una persona realiza ciertas actividades o interactúa con el mundo a su alrededor. Puede ser una limitación física, sensorial, cognitiva, mental, o de otro tipo que impacta en la vida diaria.</p>
+
+            <p><strong>Tipos de Discapacidad</strong><br>
+            Las discapacidades pueden categorizarse de diferentes maneras, entre ellas:</p>
+
+            <ul>
+                <li><strong>Discapacidad Física:</strong> Incluye limitaciones en la movilidad o en la estructura corporal. Ejemplos son la paraplejía, la tetraplejía y la distrofia muscular.</li>
+                <li><strong>Discapacidad Sensorial:</strong> Afecta los sentidos como la vista y la audición. La discapacidad visual puede ir desde baja visión hasta ceguera total, y la discapacidad auditiva puede variar de leve a profunda.</li>
+                <li><strong>Discapacidad Cognitiva:</strong> Se refiere a limitaciones en las funciones mentales. Ejemplos son el síndrome de Down, el autismo y los trastornos de aprendizaje.</li>
+                <li><strong>Discapacidad Mental:</strong> Involucra condiciones que afectan la salud mental, como la esquizofrenia, el trastorno bipolar y la depresión profunda.</li>
+                <li><strong>Discapacidad Psicosocial:</strong> Abarca condiciones relacionadas con la interacción social y el comportamiento, como el estrés postraumático y los trastornos de ansiedad.</li>
+            </ul>
+
+            <p><strong>Estadísticas en Chile</strong><br>
+            Según el Segundo Estudio Nacional de la Discapacidad en Chile (ENDISC II) realizado en 2015, se estima que el 16,7% de la población mayor de 2 años presenta algún tipo de discapacidad. Esto representa alrededor de 2.836.818 personas. De este grupo, el 20% tiene una discapacidad severa, lo que equivale a más de 500.000 personas.</p>
+
+            <p><strong>Tratamientos y Apoyo</strong><br>
+            Los tratamientos para la discapacidad varían según el tipo y la severidad. Algunos de ellos incluyen terapias físicas y ocupacionales, apoyo psicológico y uso de tecnologías de asistencia, como sillas de ruedas, audífonos y software de comunicación. También se han desarrollado iniciativas para promover la inclusión laboral y social de las personas con discapacidad en Chile, como el Programa de Inclusión Laboral y las leyes de accesibilidad.</p>
+
+            <p><strong>Cómo Promover la Inclusión</strong><br>
+            La inclusión de personas con discapacidad es un desafío que requiere cambios en diversos niveles, desde la infraestructura y el transporte hasta la educación y el empleo. La sensibilización de la comunidad es clave para derribar barreras sociales y fomentar el respeto. Además, la capacitación en lenguaje de señas y la implementación de accesos físicos y tecnológicos pueden hacer una gran diferencia en la vida diaria de estas personas.</p>
+
+            <p><strong>Fuentes:</strong><br>
+            - Instituto Nacional de Estadísticas (INE), Chile. "Segundo Estudio Nacional de la Discapacidad" (2015).<br>
+            - Organización Mundial de la Salud (OMS). "Informe Mundial sobre la Discapacidad" (2011).<br>
+            - Ministerio de Desarrollo Social y Familia, Chile. "Política Nacional de Discapacidad".</p>
+        </div>
+    </div>
+</body>
+</html>
