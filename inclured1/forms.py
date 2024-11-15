@@ -9,7 +9,9 @@ class UsuarioForm(forms.ModelForm):
         widgets = {
             'password': forms.PasswordInput(),
         }
-
+        labels = {
+            'cod_disc': 'Discapacidad',  # Etiqueta personalizada
+        }
     def __init__(self, *args, **kwargs):
         super(UsuarioForm, self).__init__(*args, **kwargs)
         self.fields['cod_disc'].queryset = Discapacidad.objects.all()  # Para que muestre todas las discapacidades en el formulario

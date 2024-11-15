@@ -16,7 +16,6 @@ def register_view(request):
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
             user.save()
-            return redirect(index())  # Redirige a una página de éxito después del registro
     else:
         form = UsuarioForm()
 
@@ -48,8 +47,8 @@ def logout_user(request):
         return JsonResponse({"message": "Sesión cerrada con éxito"}, status=200)
     return JsonResponse({"error": "Método no permitido"}, status=405)
 
-def perfil_usuario(request):
-    return render(request, "perfil_usuario.html")
+def perfil(request):
+    return render(request, "perfil.html")
 
 # Vista para la página de inicio
 def index(request):

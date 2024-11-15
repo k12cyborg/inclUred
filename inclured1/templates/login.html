@@ -13,14 +13,17 @@
   </head>
   <body>
     {% include "./componentes/Header.html" %}
-
-    <h1>Iniciar Sesión</h1>
-    <form method="post">
-      {% csrf_token %} {{ form.as_p }}
-      <button type="submit">Iniciar Sesión</button>
-    </form>
-    {% for message in messages %}
-    <p>{{ message }}</p>
-    {% endfor %}
+    <main>
+      <div class="form_container">
+        <h2>Iniciar Sesión</h1>
+        <form method="post" class="form-session">
+          {% csrf_token %} {{ form.as_p }}
+          <button type="submit">Iniciar Sesión</button>
+        </form>
+      </div>
+      {% for message in messages %}
+      <p>{{ message }}</p>
+      {% endfor %}
+    </main>
   </body>
 </html>

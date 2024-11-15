@@ -51,14 +51,11 @@ nav a:hover {
     background-color: #6da96d; /* Verde oscuro al pasar el cursor */
 }
 
-.user-controls {
-    border: 1px solid red;
-    display: flex;
-}
+
 /* Perfil y sesión */
 .user-icon {
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
     background-color: #fafaf3;
     border-radius: 50%;
     display: flex;
@@ -66,6 +63,58 @@ nav a:hover {
     justify-content: center;
     font-weight: bold;
     color: black;
+}
+.user-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 13rem;
+    display: flex;
+}
+.profile-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .2rem;
+}
+
+.profile-box a:hover {
+    transform: scale(1.1);
+}
+.profile-box p {
+    font-size: 1.2rem;
+    text-decoration: underline;
+    text-decoration-color: #6da96d;
+}
+
+#logout-btn {
+    all: unset;
+    color: black;
+    text-transform: capitalize;
+    font-size: 1rem;
+}
+
+#logout-btn:hover {
+    opacity: .8;
+    color: #6da96d;
+    cursor: pointer;
+}
+
+#reglog-btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem ;
+}
+#reglog-btns a {
+    text-decoration: none;
+    color: #6da96d;
+}
+#reglog-btns a:hover {
+    text-decoration: none;
+    color: #4d794d;
+    cursor: pointer;
 }
 
 /* Sección principal */

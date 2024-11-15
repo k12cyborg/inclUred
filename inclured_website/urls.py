@@ -15,7 +15,7 @@ urlpatterns = [
     path('register/', views.register_view, name='register'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
 
-    path('perfil_usuario/', views.perfil_usuario, name='perfil_usuario'),
+    path('perfil/', views.perfil, name='perfil'),
 
     # URLs para las secciones principales de la página
     path('informacion/', views.informacion, name='informacion'),
