@@ -16,6 +16,8 @@ def register_view(request):
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
             user.save()
+            login(request, user)
+            return redirect("index")  # Cambia 'pagina_principal' por tu vista principal
     else:
         form = UsuarioForm()
 
