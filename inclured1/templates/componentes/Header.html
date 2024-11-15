@@ -4,7 +4,10 @@
   </a>
   <nav>
     <a href="{% url 'informacion' %}">Información</a>
+    {% if user.is_authenticated%}
     <a href="{% url 'anecdotas' %}">Anécdotas</a>
+    {% endif %}
+    
     <a href="{% url 'cursos' %}">Cursos</a>
     <a href="{% url 'videos_informativos' %}">Videos Informativos</a>
   </nav>
@@ -15,7 +18,7 @@
       <button type="submit" id="logout-btn">Cerrar Sesion</button>
     </form>
     <div class="profile-box">
-      <a href="{% url 'perfil' %}" class="user-icon"> <span>👤</span></a>
+      <p class="user-icon"> <span>👤</span></p>
       <p>{{ user.nombre }}</p>
     </div>
 
@@ -25,7 +28,7 @@
       <a href="{% url 'register' %}" class="register-link">Registrarme</a>
     </div>
     <div class="profile-box">
-      <a href="{% url 'perfil' %}" class="user-icon"> <span>👤</span></a>
+      <p class="user-icon"> <span>👤</span></>
       <p>Invitado</p>
     </div>
     {% endif %}

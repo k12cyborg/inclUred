@@ -1,15 +1,52 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cursos - InclUred</title>
-    <link rel="stylesheet" href="{% static 'inclured1/style.css' %}">
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'inclured1/style.css' %}" />
+  </head>
+  <body>
     <!-- Encabezado con navegación -->
     {% include "./componentes/Header.html" %}
-  
-</body>
+    <section class="new-anecdotas">
+      <div>
+        {% if user.is_authenticated %}
+        <div class="new-anecdota-container">
+          <h3>Crear Anécdota</h3>
+          <form method="post" id="form-crear-anecdota">
+            {% csrf_token %} {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </form>
+        </div>
+        {% else %}
+        <p class="text-warning">
+          Debes iniciar sesión para agregar una anécdota.
+        </p>
+        {% endif %}
+      </div>
+    </section>
+
+    <ul class="anecdota-list">
+      {% if anecdotas %} {% for anecdota in anecdotas %}
+      <li class="anecdota-item">
+        <div class="anecdota-header">
+          <h2>{{ anecdota.titulo }}</h2>
+          <div>
+            <p><strong>Autor: {{anecdota.id_usuario.nombre}}</strong></p>
+            <p><strong>{{anecdota.id_usuario.cod_disc}}</strong></p>
+          </div>
+        </div>
+        <div class="anecdota-content">
+          <p>{{ anecdota.contenido }}</p>
+        </div>
+      </li>
+      {% endfor %} {% else %}
+			<li class="no-anecdota">
+				No hay anecdotas actualmente :(
+			</li>
+			{% endif %}
+    </ul>
+  </body>
 </html>

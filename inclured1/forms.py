@@ -1,5 +1,5 @@
 from django import forms
-from .models import Usuario, Discapacidad
+from .models import Usuario, Discapacidad, Anecdota
 from django.contrib.auth.forms import AuthenticationForm
 
 class UsuarioForm(forms.ModelForm):
@@ -19,3 +19,13 @@ class UsuarioForm(forms.ModelForm):
 class LoginForm(AuthenticationForm):
     username = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+
+class AnecdotaForm(forms.ModelForm):
+    class Meta:
+        model = Anecdota
+        fields = ['titulo', 'contenido']  # Excluye id_usuario porque será asignado automáticamente
+
+        widgets = {
+            'titulo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Título'}),
+            'contenido': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Escribe tu anécdota aquí...'}),
+        }

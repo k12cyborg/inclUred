@@ -3,10 +3,11 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.views.generic import ListView, DetailView
 from .models import Usuario, Discapacidad, Anecdota
-from .forms import UsuarioForm, LoginForm
+from .forms import UsuarioForm, LoginForm, AnecdotaForm
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import logout
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 
 #Vista para el registro
 def register_view(request):
@@ -60,6 +61,21 @@ def index(request):
 def informacion(request):
     return render(request, "informacion.html")
 
+# Vista para las sección de Anécdotas
+@login_required
+def anecdotas(request):
+    anecdotas = Anecdota.objects.select_related('id_usuario').all()
+    if request.method == 'POST':
+        form = AnecdotaForm(request.POST)
+        if form.is_valid():
+            anecdota = form.save(commit=False)
+            anecdota.id_usuario = request.user  # Asigna el usuario logueado
+            anecdota.save()
+    else:
+        form = AnecdotaForm()
+    
+    return render(request, 'anecdotas.html', {'anecdotas': anecdotas, 'form': form})
+
 # Vista para la sección de Cursos
 def cursos(request):
     return render(request, "cursos.html")
@@ -68,9 +84,6 @@ def cursos(request):
 def videos_informativos(request):
     return render(request, "videos_informativos.html")
 
-# Vista para la sección de Anécdotas
-def anecdotas(request):
-    return render(request, "anecdotas.html")
 
 # Listar usuarios
 class UsuarioListView(ListView):
