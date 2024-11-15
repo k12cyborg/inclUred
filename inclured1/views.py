@@ -1,7 +1,21 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView
 from .models import Usuario, Discapacidad, Anecdota
+from .forms import UsuarioForm
 
+#Vista para el registro
+def registro_usuario(request):
+    if request.method == 'POST':
+        form = UsuarioForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+            return redirect('exito')  # Redirige a una página de éxito después del registro
+    else:
+        form = UsuarioForm()
+
+    return render(request, 'registro_usuario.html', {'form': form})
 # Vista para la página de inicio
 def index(request):
     return render(request, "index.html")

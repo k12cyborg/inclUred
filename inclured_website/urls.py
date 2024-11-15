@@ -9,6 +9,8 @@ urlpatterns = [
     # Incluye las URLs de `inclured1`
     path('inclured1/', include("inclured1.urls")),
 
+    path('registro/', views.registro_usuario, name='registro_usuario'),
+
     # URLs para las secciones principales de la página
     path('informacion/', views.informacion, name='informacion'),
     path('anecdotas/', views.anecdotas, name='anecdotas'),

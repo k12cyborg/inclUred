@@ -1,0 +1,16 @@
+
+.form_container {
+  padding: 1rem;
+  background-color: white;
+  border-radius: .75rem;
+}
+
+.form_container form {
+  width: 100%;
+}
+
+.form_container form p {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 6rem 1fr;
+}
