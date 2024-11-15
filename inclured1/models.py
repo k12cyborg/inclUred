@@ -1,7 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 
-
 class UsuarioManager(BaseUserManager):
     def create_user(self, correo, nombre, password=None):
         if not correo:
@@ -53,9 +52,6 @@ class Usuario(AbstractBaseUser):
     def has_module_perms(self, app_label):
         return self.is_superuser
 
-
-
-
 class Discapacidad(models.Model):
     cod_disc = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=255)
@@ -63,7 +59,6 @@ class Discapacidad(models.Model):
 
     def __str__(self):
         return self.nombre
-
 
 class Anecdota(models.Model):
     id_anecdota = models.AutoField(primary_key=True)
