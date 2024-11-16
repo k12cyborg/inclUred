@@ -1,52 +1,61 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cursos - InclUred</title>
-    <link rel="stylesheet" href="{% static 'inclured1/style.css' %}" />
-  </head>
-  <body>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anécdotas - InclUred</title>
+    <link rel="stylesheet" href="{% static 'inclured1/style.css' %}">
+</head>
+<body>
     <!-- Encabezado con navegación -->
     {% include "./componentes/Header.html" %}
-    <section class="new-anecdotas">
-      <div>
-        {% if user.is_authenticated %}
-        <div class="new-anecdota-container">
-          <h3>Crear Anécdota</h3>
-          <form method="post" id="form-crear-anecdota">
-            {% csrf_token %} {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Guardar</button>
-          </form>
-        </div>
-        {% else %}
-        <p class="text-warning">
-          Debes iniciar sesión para agregar una anécdota.
-        </p>
-        {% endif %}
-      </div>
-    </section>
 
-    <ul class="anecdota-list">
-      {% if anecdotas %} {% for anecdota in anecdotas %}
-      <li class="anecdota-item">
-        <div class="anecdota-header">
-          <h2>{{ anecdota.titulo }}</h2>
-          <div>
-            <p><strong>Autor: {{anecdota.id_usuario.nombre}}</strong></p>
-            <p><strong>{{anecdota.id_usuario.cod_disc}}</strong></p>
-          </div>
+    <!-- Contenido de la página de Anécdotas -->
+    <div class="content" id="anecdotas">
+        <div class="section-title">Anécdotas</div>
+        
+        <!-- Descripción de la sección -->
+        <div class="text-container">
+            <p>Las anécdotas personales de personas con discapacidad son poderosas herramientas de sensibilización y empatía. A continuación, puedes leer o agregar historias que muestran los desafíos, logros y perspectivas de quienes enfrentan alguna discapacidad.</p>
         </div>
-        <div class="anecdota-content">
-          <p>{{ anecdota.contenido }}</p>
+
+        <!-- Formulario para Crear Anécdota -->
+        <div class="new-anecdota-container">
+            <form action="{% url 'crear_anecdota' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="titulo">Título:</label>
+                    <input type="text" id="titulo" name="titulo" placeholder="Escribe el título aquí..." required>
+                </div>
+                <div class="form-group">
+                    <label for="contenido">Contenido:</label>
+                    <textarea id="contenido" name="contenido" placeholder="Escribe tu anécdota aquí..." rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Publicar</button>
+            </form>
         </div>
-      </li>
-      {% endfor %} {% else %}
-			<li class="no-anecdota">
-				No hay anecdotas actualmente :(
-			</li>
-			{% endif %}
-    </ul>
-  </body>
+
+        <!-- Lista de Anécdotas -->
+        <div class="anecdota-list">
+            {% if anecdotas %}
+                {% for anecdota in anecdotas %}
+                <div class="anecdota-item">
+                    <div class="anecdota-header">
+                        <h3>{{ anecdota.titulo }}</h3>
+                        <p><small>Escrita por {{ anecdota.id_usuario.username }} - {{ anecdota.fecha }}</small></p>
+                    </div>
+                    <div class="anecdota-content">
+                        <p>{{ anecdota.contenido }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="no-anecdota">
+                    <p>No hay anécdotas actualmente :(</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
 </html>

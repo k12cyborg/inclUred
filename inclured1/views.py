@@ -9,7 +9,7 @@ from django.contrib.auth import logout
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 
-#Vista para el registro
+# Vista para el registro
 def register_view(request):
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
@@ -24,6 +24,7 @@ def register_view(request):
 
     return render(request, 'register.html', {'form': form})
 
+# Vista para iniciar sesión
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(data=request.POST)
@@ -43,6 +44,7 @@ def login_view(request):
 
     return render(request, 'login.html', {'form': form})
 
+# Vista para cerrar sesión
 @csrf_exempt
 def logout_user(request):
     if request.method == "POST":
@@ -50,6 +52,7 @@ def logout_user(request):
         return JsonResponse({"message": "Sesión cerrada con éxito"}, status=200)
     return JsonResponse({"error": "Método no permitido"}, status=405)
 
+# Vista para el perfil del usuario
 def perfil(request):
     return render(request, "perfil.html")
 
@@ -76,6 +79,20 @@ def anecdotas(request):
     
     return render(request, 'anecdotas.html', {'anecdotas': anecdotas, 'form': form})
 
+# Vista para crear una anécdota
+@login_required
+def crear_anecdota(request):
+    if request.method == 'POST':
+        form = AnecdotaForm(request.POST)
+        if form.is_valid():
+            anecdota = form.save(commit=False)
+            anecdota.id_usuario = request.user  # Asigna el usuario logueado
+            anecdota.save()
+            return redirect('anecdotas')  # Redirige a la página de anécdotas
+    else:
+        form = AnecdotaForm()
+    return render(request, 'crear_anecdota.html', {'form': form})
+
 # Vista para la sección de Cursos
 def cursos(request):
     return render(request, "cursos.html")
@@ -83,7 +100,6 @@ def cursos(request):
 # Vista para la sección de Videos Informativos
 def videos_informativos(request):
     return render(request, "videos_informativos.html")
-
 
 # Listar usuarios
 class UsuarioListView(ListView):

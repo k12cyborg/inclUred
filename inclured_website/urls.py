@@ -25,18 +25,14 @@ urlpatterns = [
 
     # URLs para Usuario
     path('usuarios/', views.UsuarioListView.as_view(), name='usuario_list'),
-    path('usuarios/<int:pk>/', views.UsuarioDetailView.as_view(),
-         name='usuario_detail'),
+    path('usuarios/<int:pk>/', views.UsuarioDetailView.as_view(), name='usuario_detail'),
 
     # URLs para Discapacidad
-    path('discapacidades/', views.DiscapacidadListView.as_view(),
-         name='discapacidad_list'),
-    path('discapacidades/<int:pk>/',
-         views.DiscapacidadDetailView.as_view(), name='discapacidad_detail'),
+    path('discapacidades/', views.DiscapacidadListView.as_view(), name='discapacidad_list'),
+    path('discapacidades/<int:pk>/', views.DiscapacidadDetailView.as_view(), name='discapacidad_detail'),
 
-    # URLs para Anecdota (subpáginas de anécdotas específicas)
+    # URLs para Anecdota
     path('anecdotas-list/', views.AnecdotaListView.as_view(), name='anecdota_list'),
-    path('anecdotas-list/<int:pk>/',
-         views.AnecdotaDetailView.as_view(), name='anecdota_detail'),
-
+    path('anecdotas-list/<int:pk>/', views.AnecdotaDetailView.as_view(), name='anecdota_detail'),
+    path('anecdotas/crear/', views.crear_anecdota, name='crear_anecdota'),  # Nueva URL para crear anécdota
 ]

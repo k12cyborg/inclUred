@@ -4,17 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InclUred - Página de Inicio</title>
+    <title>Inicio - InclUred</title>
     <link rel="stylesheet" href="{% static 'inclured1/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Encabezado con navegación -->
-    {% include "./componentes/Header.html" %}
+    <header>
+        <div class="logo">
+            <a href="{% url 'index' %}">InclUred</a>
+        </div>
+        <nav>
+            <a href="{% url 'informacion' %}">Información</a>
+            <a href="{% url 'anecdotas' %}">Anécdotas</a>
+            <a href="{% url 'cursos' %}">Cursos</a>
+            <a href="{% url 'videos' %}">Videos Informativos</a>
+        </nav>
+        <div class="user-icon">👤</div>
+    </header>
 
-    <!-- Contenido de la Página de Inicio -->
-    <div class="content" id="inicio">
-        <div class="section-title">Bienvenido a InclUred</div>
-        <p>InclUred es un sitio dedicado a promover la inclusión y educación sobre las discapacidades. Explora nuestras secciones para aprender más sobre los distintos tipos de discapacidades, anécdotas de vida, cursos educativos y videos informativos.</p>
-    </div>
+    <!-- Contenido de la página de inicio -->
+    <main>
+        <div class="welcome-banner">
+            <h1>BIENVENIDO A INCLURED</h1>
+            <p>
+                InclUred es un sitio dedicado a promover la inclusión y educación sobre discapacidades.
+                Explora nuestras secciones para aprender más sobre los distintos tipos de discapacidades,
+                anécdotas de vida, cursos educativos y videos informativos, si quieres leer o publicar 
+                anécdotas deberas iniciar sesion o registrarte <3 
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 InclUred. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
